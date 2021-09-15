@@ -97,4 +97,9 @@ public class PostsApiControllerTest {
         assertThat(all.get(0).getTitle()).isEqualTo(expectedTitle);
         assertThat(all.get(0).getContent()).isEqualTo(expectedContent);
     }
+
+    @Test
+    public void Posts_모두찾기() throws Exception {
+        // TODO : 모두 찾기 테스트 코드 작성하기
+    }
 }

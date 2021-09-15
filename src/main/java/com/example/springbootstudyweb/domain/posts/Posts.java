@@ -32,4 +32,10 @@ public class Posts {
         this.content = content;
         this.author = author;
     }
+    // 새로운 제목과 내용으로 수정
+    public void update(String title, String content) {
+        this.title = title;
+        this.content = content;
+    }
+
 }

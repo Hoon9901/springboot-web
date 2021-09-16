@@ -1,6 +1,7 @@
 package com.example.springbootstudyweb.domain.posts;
 
 
+import com.example.springbootstudyweb.domain.BaseTimeEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,7 +12,7 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor
 @Entity // DB 테이블과 링크될 클래스
-public class Posts {
+public class Posts extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // pk 생성 규칙

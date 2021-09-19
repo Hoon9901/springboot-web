@@ -2,6 +2,7 @@ package com.example.springbootstudyweb.service;
 
 import com.example.springbootstudyweb.domain.posts.Posts;
 import com.example.springbootstudyweb.domain.posts.PostsRepository;
+import com.example.springbootstudyweb.dto.PostsListResponseDto;
 import com.example.springbootstudyweb.dto.PostsResponseDto;
 import com.example.springbootstudyweb.dto.PostsSaveRequestDto;
 import lombok.RequiredArgsConstructor;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -17,7 +19,7 @@ public class PostService {
     private final PostsRepository postsRepository;
 
     @Transactional
-    public Long save(PostsSaveRequestDto requestDto){
+    public Long save(PostsSaveRequestDto requestDto) {
         return postsRepository.save(requestDto.toEntity()).getId();
     }
 
@@ -42,4 +44,11 @@ public class PostService {
         return new PostsResponseDto(entity);
     }
 
+    @Transactional(readOnly = true) // 조회기능만
+    public List<PostsListResponseDto> findAllDesc() {
+        return postsRepository.findAllDesc()
+                .stream()
+                .map(PostsListResponseDto::new)
+                .collect(Collectors.toList());
+    }
 }

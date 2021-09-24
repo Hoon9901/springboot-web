@@ -26,8 +26,8 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
 
     @Override
     public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
-        OAuth2UserService delgate = new DefaultOAuth2UserService();
-        OAuth2User oAuth2User = delgate.loadUser(userRequest);
+        OAuth2UserService delegate = new DefaultOAuth2UserService();
+        OAuth2User oAuth2User = delegate.loadUser(userRequest);
 
         String registrationId = userRequest.getClientRegistration().getRegistrationId();    // 현재 진행중인 서비스 코드(google, naver ..)
         String userNameAttributeName = userRequest.getClientRegistration()  // oauth2 로그인 진행 시 key field 값

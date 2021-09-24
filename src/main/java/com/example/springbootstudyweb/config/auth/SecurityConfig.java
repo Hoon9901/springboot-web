@@ -20,10 +20,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .headers().frameOptions().disable() // h2-console 사용하기 위해 비활성화
                 .and()  // URL 별 권환 지정
                     .authorizeRequests()
-                    .antMatchers("/", "/css/**", "/images/**",
-                        "/js/**", "/h2-console/**").permitAll()
+                    .antMatchers("/", "/css/**", "/images/**", "/js/**", "/h2-console/**").permitAll()
                     .antMatchers("/api/v1/**").hasRole(Role.USER.name())
-                    .anyRequest().authenticated()   // 설정된 값 이외 URL는 인증된 사용자만 접속
+                    .anyRequest().authenticated()
                 .and()
                     .logout()
                         .logoutSuccessUrl("/")

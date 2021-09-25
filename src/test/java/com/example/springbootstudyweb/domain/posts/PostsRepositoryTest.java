@@ -1,6 +1,7 @@
 package com.example.springbootstudyweb.domain.posts;
 
 import org.junit.After;
+import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,7 @@ class PostsRepositoryTest {
 
     @Test
     public void 게시글저장_불러오기() {
+        postsRepository.deleteAll();    // after 가 안먹어서 수동으로 지움. // TODO : 해결하기
         // given
         String title = "테스트 게시글";
         String content = "테스트 본문";
